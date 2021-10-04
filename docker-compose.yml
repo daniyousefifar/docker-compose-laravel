@@ -6,7 +6,7 @@ services:
     build:
       context: .
       dockerfile: .docker/Dockerfile
-    image: daniyousefifar/php
+    image: laravelapp
     container_name: app
     restart: unless-stopped
     tty: true
@@ -28,8 +28,8 @@ services:
     restart: unless-stopped
     tty: true
     ports:
-      - "4010:80"
-      - "4011:443"
+      - "80:80"
+      - "443:443"
     volumes:
       - ./:/var/www/html
       - ./.docker/nginx.conf:/etc/nginx/conf.d/app.conf
@@ -43,7 +43,7 @@ services:
     restart: unless-stopped
     tty: true
     ports:
-      - "4012:3306"
+      - "3306:3306"
     environment:
       MYSQL_DATABASE: laravel
       MYSQL_ROOT_PASSWORD: root
